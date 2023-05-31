@@ -1,5 +1,4 @@
 from random import shuffle
-
 class Deck(object):
     def __init__(self) -> None:
         """ Initialiser for Deck class"""
@@ -25,6 +24,7 @@ class Deck(object):
         shuffle(self.cards)
 
     def draw_card(self) -> list:
+        """ Draws a card from the deck """
         if len(self.cards) > 0:
             return self.cards.pop()
         else:

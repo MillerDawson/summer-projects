@@ -1,7 +1,7 @@
 import cards
 
 class higher_or_lower(object):
-    """ main class for unlimited higher or lower game """
+    """ Main class for unlimited higher or lower game """
 
     def __init__(self) -> None:
         self.player_choice = None
@@ -16,7 +16,6 @@ class higher_or_lower(object):
         self.card_deck.shuffle_deck()
         card = self.card_deck.draw_card() # draws your card from the deck
 
-
         while self.playing == True: # the loop for the infinite play of the game
             self.card_deck = cards.Deck() # recreates the deck everytime for endless higher or lower
             self.card_deck.shuffle_deck()
@@ -29,8 +28,8 @@ class higher_or_lower(object):
 
             self.get_result(player_card, next_card) # gets the result of the card
 
-
     def get_card_value(self, card) -> int:
+        """ Returns the value of a card """
         if card[1] == 'J' or card[1] == 'Q' or card[1] ==  'K':
             return 10
         elif card[1] == 'A':
@@ -39,24 +38,25 @@ class higher_or_lower(object):
             return int(card[1])
 
     def get_result(self, player_card:int, next_card:int) -> int:
+        """ Returns the result of the game """
+        
         if self.player_choice == 'h':
             if next_card >= player_card:
-                print(f"Correct - next card was {next_card}")
                 self.streak +=1
+                print(f"Correct - next card was {next_card} - Streak: {self.streak}")
                 return self.streak
             else:
-                print(f"Incorrect - next card was {next_card}")
+                print(f"Incorrect - next card was {next_card} - Streak: {self.streak}")
                 self.playing = False
                 return self.streak
         else:
             if next_card <= player_card:
-                print(f"Correct - next card was {next_card}")
                 self.streak +=1
+                print(f"Correct - next card was {next_card} - Streak: {self.streak}")
                 return self.streak
             else:
-                print(f"Incorrect - next card was {next_card}")
+                print(f"Incorrect - next card was {next_card} - Streak: {self.streak}")
                 self.playing = False
                 return self.streak
-
 
 higher_or_lower().play()
